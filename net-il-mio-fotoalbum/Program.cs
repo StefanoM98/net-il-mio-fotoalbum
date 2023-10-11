@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using net_il_mio_fotoalbum.Database;
 namespace net_il_mio_fotoalbum
 {
@@ -8,12 +7,13 @@ namespace net_il_mio_fotoalbum
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-                        
 
-                                    builder.Services.AddDbContext<FotoContext>();
 
-                                                builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<FotoContext>();
+            builder.Services.AddDbContext<FotoContext>();
+
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<FotoContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
