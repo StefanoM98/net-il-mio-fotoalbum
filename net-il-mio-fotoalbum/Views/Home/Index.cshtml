@@ -3,5 +3,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Pagina iniziale</h1>
+    <input type="text"
+           id="cerca"
+           onkeyup="getFoto()"
+           class="form-control"
+           placeholder="Cerca un post" />
+
+    <div class="container d-flex justify-content-around flex-wrap p-5 gap-4" id="card-container">
+        @* qui mettiamo le foto.... *@
+    </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/js/site.js">
+
+    </script>
+
+    <script>
+        getFoto();
+    </script>
+}
