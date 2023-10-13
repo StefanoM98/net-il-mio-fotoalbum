@@ -41,14 +41,13 @@ function formSubmit(e) {
     axios.post("api/usermessage", { Title: userEmail, Text: userMessage})
         .then(resp => {
             done.classList.remove("d-none")
+            done.classList.add("text-primary")
         })
         .catch(error => {
             console.log(error)
-
+            done.innerHTML= "Abbiamo un problema! Riprova più tardi"
             done.classList.remove("d-none")
-
-
-            done.classList.add("text-error")
+            done.classList.add("text-danger")
         })
 }
 
