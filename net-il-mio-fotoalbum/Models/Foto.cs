@@ -17,9 +17,9 @@ namespace net_il_mio_fotoalbum.Models
 
         public byte[]? Imagefile { get; set; }
 
-        public string ImagesrcFile => Imagefile is null ? (Pathimg is null ? "" : Pathimg) : $"data:image/png;base64, {Convert.ToBase64String(Imagefile)}"; 
+        public string ImagesrcFile => Imagefile is null ? (Pathimg is null ? "" : Pathimg) : $"data:image/png;base64, {Convert.ToBase64String(Imagefile)}";
 
-        public bool Visible { get; set; }
+        public bool Visible { get; set; } = true;
         
         public List<Category>? Categories { get; set; }
 

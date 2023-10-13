@@ -28,35 +28,27 @@ function getFoto() {
         .catch((error)=>alert(error))
 }
 
-function postMessage(message) {
-    axios.post("/api/Messages", message)
-        .then((resp) => {
-            console.log(resp.data)
+
+function formSubmit(e) {
+    e.preventDefault();
+    const userEmail = document.getElementById("email").value
+    const userMessage = document.getElementById("textMessage").value.trim();
+    const done = document.getElementById("done")
+
+
+    console.log(userEmail, userMessage)
+
+    axios.post("api/usermessage", { Title: userEmail, Text: userMessage})
+        .then(resp => {
+            done.classList.remove("d-none")
         })
-        .catch(err => console.log(err));
-}
+        .catch(error => {
+            console.log(error)
 
-function initMessageForm() {
-    const form = document.getElementById('message-create-form');
+            done.classList.remove("d-none")
 
-    form.addEventListener("submit", e => {
-        e.preventDefault()
 
-        const message = getMessageForm(form)
-        getMessageForm(message);
-        email.value = "";
-        textMessage.value = "";
-    })
-}
-
-function getMessageForm() {
-    const email = document.getElementById('email').value;
-
-    const textMessage = document.getElementById('text').value;
-
-    return {
-        email,
-        textMessage
-    }
+            done.classList.add("text-error")
+        })
 }
 
